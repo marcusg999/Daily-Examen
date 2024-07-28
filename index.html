@@ -1,0 +1,462 @@
+<html><head><title>Daily Examen - Spiritual Reflection Guide</title><style>
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --accent-color: #e74c3c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem 0;
+}
+
+h1 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h2, h3 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.examen-prompts {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.prompt-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.prompt-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.prompt-button:hover {
+    background-color: #c0392b;
+}
+
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.timer {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#prompt-display {
+    margin-top: 1rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.timer-button {
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    background-color: var(--secondary-color);
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+.journal-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+#journal-entry {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.history-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--secondary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: var(--background-color);
+    border: 4px solid var(--accent-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    left: 50%;
+}
+
+.left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid var(--secondary-color);
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--secondary-color);
+}
+
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid var(--secondary-color);
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--secondary-color) transparent transparent;
+}
+
+.right::after {
+    left: -16px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+}
+
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .timer-container {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item::before {
+        left: 60px;
+        border: medium solid var(--secondary-color);
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--secondary-color) transparent transparent;
+    }
+
+    .left::after, .right::after {
+        left: 15px;
+    }
+
+    .right {
+        left: 0%;
+    }
+}
+</style></head><body>
+<header>
+    <div class="container">
+        <nav>
+            <h1>Daily Examen</h1>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section id="intro">
+        <h2>Welcome to Daily Examen</h2>
+        <p>Embrace a centuries-old practice of spiritual reflection, now at your fingertips. Our app guides you through the Ignatian Examen, helping you find meaning and divine presence in your daily life.</p>
+    </section>
+
+    <section id="examen-practice">
+        <h2>Practice the Examen</h2>
+        <div class="examen-prompts">
+            <h3>Daily Examen Prompts</h3>
+            <div class="prompt-buttons">
+                <button class="prompt-button" data-prompt="Become aware of God's presence. Take a moment to recognize that God is with you right now.">1. God's Presence</button>
+                <button class="prompt-button" data-prompt="Review your day with gratitude. What moments bring you joy and thankfulness?">2. Gratitude</button>
+                <button class="prompt-button" data-prompt="Pay attention to your emotions. What feelings have you experienced today?">3. Emotions</button>
+                <button class="prompt-button" data-prompt="Choose one feature of the day and pray from it. What stands out as significant?">4. Significant Moment</button>
+                <button class="prompt-button" data-prompt="Look toward tomorrow. What guidance do you seek for the challenges ahead?">5. Tomorrow</button>
+            </div>
+            <div id="prompt-display"></div>
+            <div class="timer-container">
+                <div class="timer-controls">
+                    <button id="decrease-time" class="timer-button">-</button>
+                    <input type="number" id="time-input" min="1" max="60" value="5">
+                    <button id="increase-time" class="timer-button">+</button>
+                </div>
+                <div class="timer">05:00</div>
+                <button id="start-timer">Start Meditation</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="journaling">
+        <h2>Journal Your Reflections</h2>
+        <div class="journal-section">
+            <textarea id="journal-entry" placeholder="Record your thoughts, prayers, and insights here..."></textarea>
+            <button id="save-journal">Save Entry</button>
+        </div>
+    </section>
+
+    <section id="how-to">
+        <h2>How to Perform the Daily Examen</h2>
+        <ol>
+            <li><strong>Become aware of God's presence.</strong> Look back on the events of the day in the company of the Holy Spirit.</li>
+            <li><strong>Review the day with gratitude.</strong> Walk through your day in the presence of God and note its joys and delights.</li>
+            <li><strong>Pay attention to your emotions.</strong> Reflect on the feelings you experienced during the day.</li>
+            <li><strong>Choose one feature of the day and pray from it.</strong> Ask the Holy Spirit to direct you to something during the day that God thinks is particularly important.</li>
+            <li><strong>Look toward tomorrow.</strong> Ask God to give you light for tomorrow's challenges.</li>
+        </ol>
+        <p>Use the prompt buttons above to guide you through each step of the Examen.</p>
+    </section>
+
+    <section id="history">
+        <h2>History of the Examen</h2>
+        <div class="history-section">
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>1491-1556</h3>
+                        <p>St. Ignatius of Loyola, founder of the Jesuits, develops the Spiritual Exercises, including the Examen.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>16th Century</h3>
+                        <p>The Examen becomes a core practice in Jesuit spirituality, spreading throughout the Catholic world.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>20th Century</h3>
+                        <p>Renewed interest in Ignatian spirituality leads to wider adoption of the Examen beyond Catholic circles.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>21st Century</h3>
+                        <p>The Examen gains popularity as a mindfulness practice, adapted for various spiritual and secular contexts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+const promptButtons = document.querySelectorAll('.prompt-button');
+const promptDisplay = document.getElementById('prompt-display');
+const timerDisplay = document.querySelector('.timer');
+const startTimerButton = document.getElementById('start-timer');
+const decreaseTimeButton = document.getElementById('decrease-time');
+const increaseTimeButton = document.getElementById('increase-time');
+const timeInput = document.getElementById('time-input');
+const journalEntry = document.getElementById('journal-entry');
+const saveJournalButton = document.getElementById('save-journal');
+
+let countdown;
+let timeLeft = 300; // 5 minutes in seconds
+
+promptButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        promptDisplay.textContent = button.getAttribute('data-prompt');
+    });
+});
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function startTimer() {
+    clearInterval(countdown);
+    timeLeft = parseInt(timeInput.value) * 60;
+    updateTimerDisplay();
+    
+    countdown = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            timerDisplay.textContent = "Time's up!";
+        }
+    }, 1000);
+}
+
+function adjustTime(amount) {
+    let newValue = parseInt(timeInput.value) + amount;
+    if (newValue < 1) newValue = 1;
+    if (newValue > 60) newValue = 60;
+    timeInput.value = newValue;
+    updateTimerDisplay();
+}
+
+startTimerButton.addEventListener('click', startTimer);
+decreaseTimeButton.addEventListener('click', () => adjustTime(-1));
+increaseTimeButton.addEventListener('click', () => adjustTime(1));
+
+timeInput.addEventListener('change', () => {
+    let newValue = parseInt(timeInput.value);
+    if (newValue < 1) newValue = 1;
+    if (newValue > 60) newValue = 60;
+    timeInput.value = newValue;
+    timeLeft = newValue * 60;
+    updateTimerDisplay();
+});
+
+saveJournalButton.addEventListener('click', () => {
+    const entry = journalEntry.value;
+    if (entry.trim() !== '') {
+        // In a real app, you would save this to a database or local storage
+        console.log('Saving journal entry:', entry);
+        alert('Journal entry saved successfully!');
+        journalEntry.value = ''; // Clear the textarea
+    } else {
+        alert('Please enter some text before saving.');
+    }
+});
+
+// Initialize timer display
+updateTimerDisplay();
+</script>
+</body></html>
